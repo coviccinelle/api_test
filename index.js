@@ -19,8 +19,10 @@ ws.on('message', (data) => {
 		const time = new Date(eventData.E).toLocaleTimeString();
 
 		
-		const highestBid = eventData.b[0] ? eventData.b[0][0] : 'N/A'; //highest buying price
-		const highestAsk = eventData.a[0] ? eventData.a[0][0] : 'N/A'; //highest seliing price
+		let highestBid = 0; 
+		let highestAsk = 0; 
+		highestBid = eventData.b[0] ? eventData.b[0][0] : 'N/A'; //highest buying price
+		lowestAsk = eventData.a[0] ? eventData.a[0][0] : 'N/A'; //lowest seliing price
 
 		console.log(`[${time}] BNB/BTC | Best Bid: ${highestBid} | Best Ask: ${lowestAsk}`);
 
