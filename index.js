@@ -16,8 +16,14 @@ ws.on('message', (data) => {
 	try {
 		const eventData = JSON.parse(data);
 
-		// structure data of Binance: p = price, q = quantity, t = time
-		console.log(`[${new Date(eventData.T).toLocaleTimeString()}] BTC Price: $${parseFloat(eventData.p).toFixed(2)} | Vol: ${eventData.q}`);
+		const time = new Date(eventData.E).toLocaleTimeString();
+
+		
+		const highestBid = eventData.b[0] ? eventData.b[0][0] : 'N/A'; //highest buying price
+		const highestAsk = eventData.a[0] ? eventData.a[0][0] : 'N/A'; //highest seliing price
+
+		console.log(`[${time}] BNB/BTC | Best Bid: ${highestBid} | Best Ask: ${lowestAsk}`);
+
 	} catch (error) {
 		console.error('Error parsing JSON:', error);
 	}
