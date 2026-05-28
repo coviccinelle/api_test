@@ -20,3 +20,5 @@ npm install ws
 ```bash
 node index.js
 ```
+p/s: this is what I couldn't do during a tech test 27/05/2026. such a shame, but it's never too late to learn, it's life.
+Don't forget this lesson pleaseeeee
