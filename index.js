@@ -17,9 +17,15 @@ ws.on('message', (data) => {
 		const eventData = JSON.parse(data);
 
 		const time = new Date(eventData.E).toLocaleTimeString();
-
-		let highestBid = eventData.b[0] ? eventData.b[0][0] : 'N/A'; //highest buying price
-		let lowestAsk = eventData.a[0] ? eventData.a[0][0] : 'N/A'; //lowest seliing price
+		//eventData.b = undefined;
+		if (eventData.b === undefined)
+		{
+		//	throw new Error("EventData.b UNDEFINED");
+			console.log("Error EventData.b UNDEFINED");
+			return;
+		}
+		const highestBid = eventData.b[0] ? eventData.b[0][0] : 'N/A'; //highest buying price
+		const lowestAsk = eventData.a[0] ? eventData.a[0][0] : 'N/A'; //lowest seliing price
 
 		console.log(`[${time}] BNB/BTC | Best Bid: ${highestBid} | Best Ask: ${lowestAsk}`);
 
